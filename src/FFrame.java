@@ -24,10 +24,11 @@ public class FFrame extends JFrame {
         //Add names button
         JButton addNamesButton = new JButton("Add names");
 
+        //Add all elements
         gamePanel.add(challengeText);
         c.add(gamePanel, BorderLayout.CENTER);
         c.add(addNamesButton, BorderLayout.SOUTH);
-        
+
         this.setVisible(true);
     }
 }
