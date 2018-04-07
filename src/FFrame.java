@@ -15,6 +15,8 @@ public class FFrame extends JFrame {
         Container c = this.getContentPane();
         c.setLayout(new BorderLayout());
 
+        PlayersFrame pf = new PlayersFrame();
+
         //Game scene
         JPanel gamePanel = new JPanel(new GridBagLayout());
         gamePanel.setBackground(Color.ORANGE);

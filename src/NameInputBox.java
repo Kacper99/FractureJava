@@ -3,10 +3,15 @@ import java.awt.*;
 
 public class NameInputBox extends JPanel{
 
+    private JTextField nameField;
+
     public NameInputBox(Integer num) {
         this.setLayout(new BorderLayout());
         this.add(new JLabel(num.toString()), BorderLayout.WEST);
-        this.add(new JTextField("Enter name"), BorderLayout.CENTER);
-        this.add(new JButton("X"), BorderLayout.EAST);
+        nameField.setText("Enter name");
+    }
+
+    public String getText() {
+        return nameField.getText().equals("Enter name") ? null : nameField.getText();
     }
 }
