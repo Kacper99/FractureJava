@@ -8,7 +8,8 @@ public class NameInputBox extends JPanel{
     public NameInputBox(Integer num) {
         this.setLayout(new BorderLayout());
         this.add(new JLabel(num.toString()), BorderLayout.WEST);
-        nameField.setText("Enter name");
+        nameField = new JTextField("Enter name");
+        this.add(nameField, BorderLayout.CENTER);
     }
 
     public String getText() {
