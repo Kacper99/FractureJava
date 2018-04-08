@@ -34,7 +34,9 @@ public class PlayersFrame extends JFrame{
             this.setVisible(false);
             ArrayList<String> players = new ArrayList<>();
             for (NameInputBox box: nameBoxes) {
-                players.add(box.getText());
+                String currName = box.getText();
+                if (currName != null)
+                    players.add(box.getText());
             }
             game.updatePlayers(players);
         });
