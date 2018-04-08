@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
@@ -10,11 +14,20 @@ public class Fracture {
     private ArrayList<Challenge> allChallenges, currentChallenges;
 
     public Fracture() {
-        loadQuestions();
-    }
+        allChallenges = new ArrayList<>();
+        try {
+            FileInputStream fis = new FileInputStream("Challenges.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(fis));
 
-    public void loadQuestions() {
+            String line = null;
 
+            while ((line = br.readLine()) != null) {
+                allChallenges.add(new Challenge(line));
+            }
+
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     public void updatePlayers(ArrayList<String> newPlayers) {
