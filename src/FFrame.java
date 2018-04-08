@@ -6,6 +6,9 @@ import java.awt.*;
  */
 public class FFrame extends JFrame {
 
+    Fracture game;
+    PlayersFrame pf;
+
     public FFrame(String title) {
         super(title);
 
@@ -15,7 +18,8 @@ public class FFrame extends JFrame {
         Container c = this.getContentPane();
         c.setLayout(new BorderLayout());
 
-        PlayersFrame pf = new PlayersFrame();
+        game = new Fracture();
+        pf = new PlayersFrame(game);
 
         //Game scene
         JPanel gamePanel = new JPanel(new GridBagLayout());
@@ -25,6 +29,9 @@ public class FFrame extends JFrame {
 
         //Add names button
         JButton addNamesButton = new JButton("Add names");
+        addNamesButton.addActionListener(e -> {
+            pf.setVisible(true);
+        });
 
         //Add all elements
         gamePanel.add(challengeText);

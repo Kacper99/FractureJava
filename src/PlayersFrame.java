@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class PlayersFrame extends JFrame{
 
-    public PlayersFrame() {
+    ArrayList<NameInputBox> nameBoxes;
+
+    public PlayersFrame(Fracture game) {
         super("Add or remove players");
-        this.setVisible(true);
+        //this.setVisible(true);
 
         this.setSize(300,500);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -19,7 +21,7 @@ public class PlayersFrame extends JFrame{
 
         //Player name area
         JPanel namesBoxGUI = new JPanel(new GridLayout(8,1)); //TODO: CHANGE THIS
-        ArrayList<NameInputBox> nameBoxes = new ArrayList<>();
+        nameBoxes = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             NameInputBox nameInput = new NameInputBox(i + 1);
             nameBoxes.add(nameInput);
@@ -28,16 +30,18 @@ public class PlayersFrame extends JFrame{
 
         //Submit button
         JButton submitButton = new JButton("Submit names");
+        submitButton.addActionListener(e -> {
+            this.setVisible(false);
+            ArrayList<String> players = new ArrayList<>();
+            for (NameInputBox box: nameBoxes) {
+                players.add(box.getText());
+            }
+            game.updatePlayers(players);
+        });
 
         c.add(namesBoxGUI, BorderLayout.CENTER);
         c.add(submitButton, BorderLayout.SOUTH);
 
         this.pack();
-    }
-
-    public ArrayList<String> getPlayers() {
-        ArrayList<String> players = new ArrayList<>();
-
-        return players;
     }
 }

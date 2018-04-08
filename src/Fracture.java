@@ -23,4 +23,10 @@ public class Fracture {
     public void removePlayer(String name) {
         players.remove(name);
     }
+
+    public void updatePlayers(ArrayList<String> newPlayers) {
+        players.clear();
+        players = newPlayers;
+        System.out.println(players);
+    }
 }

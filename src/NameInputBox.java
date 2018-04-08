@@ -15,4 +15,5 @@ public class NameInputBox extends JPanel{
     public String getText() {
         return nameField.getText().equals("Enter name") ? null : nameField.getText();
     }
+
 }
