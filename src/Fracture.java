@@ -36,9 +36,16 @@ public class Fracture {
         System.out.println(players);
     }
 
-    public String getNextQuestion() {
+    public String getNextChallenge() {
         Random rand = new Random();
         Challenge randomChallenge = currentChallenges.get(rand.nextInt(currentChallenges.size()));
-        return randomChallenge.getChallenge();
+
+        String challengeText = randomChallenge.getChallenge();
+
+        while (challengeText.contains("!NAME!")) {
+            String randomName = players.get(rand.nextInt(players.size()));
+            challengeText = challengeText.replaceFirst("!NAME!", randomName);
+        }
+        return challengeText;
     }
 }

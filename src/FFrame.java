@@ -15,7 +15,7 @@ public class FFrame extends JFrame {
         super(title);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(500,500);
+        this.setSize(800,400);
 
         Container c = this.getContentPane();
         c.setLayout(new BorderLayout());
@@ -26,13 +26,14 @@ public class FFrame extends JFrame {
         //Game scene
         JPanel gamePanel = new JPanel(new GridBagLayout());
         gamePanel.setBackground(Color.ORANGE);
+
         JLabel challengeText = new JLabel("Challenge");
         challengeText.setFont(new Font("font", Font.BOLD, 18));
 
         gamePanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                challengeText.setText(game.getNextQuestion());
+                challengeText.setText("<html>" + game.getNextChallenge() + "</html>");
             }
         });
 
