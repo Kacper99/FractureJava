@@ -42,8 +42,10 @@ public class Fracture {
 
         String challengeText = randomChallenge.getChallenge();
 
+        ArrayList<String> availableNames = players;
         while (challengeText.contains("!NAME!")) {
-            String randomName = players.get(rand.nextInt(players.size()));
+            String randomName = availableNames.get(rand.nextInt(availableNames.size()));
+            availableNames.remove(randomName);
             challengeText = challengeText.replaceFirst("!NAME!", randomName);
         }
         return challengeText;
