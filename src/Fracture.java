@@ -16,14 +16,6 @@ public class Fracture {
 
     }
 
-    public void addPlayer(String name) {
-        players.add(name);
-    }
-
-    public void removePlayer(String name) {
-        players.remove(name);
-    }
-
     public void updatePlayers(ArrayList<String> newPlayers) {
         players.clear();
         players = newPlayers;
