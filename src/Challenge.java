@@ -2,13 +2,20 @@ public class Challenge {
 
     private String challenge;
     private String followup;
-    private boolean hasFollowup;
+    private boolean isFollowup;
 
-    public Challenge() {
-
+    public Challenge(String challenge) {
+        this.challenge = challenge;
+        isFollowup = false;
     }
 
-    public boolean isHasFollowup() {
-        return hasFollowup;
+    public Challenge(String challenge, String followup) {
+        this.challenge = challenge;
+        this.followup = followup;
+        isFollowup = true;
+    }
+
+    public boolean hasFollowup() {
+        return isFollowup;
     }
 }
