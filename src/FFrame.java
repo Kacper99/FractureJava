@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * Window for the game and shows the UI
@@ -26,6 +28,13 @@ public class FFrame extends JFrame {
         gamePanel.setBackground(Color.ORANGE);
         JLabel challengeText = new JLabel("Challenge");
         challengeText.setFont(new Font("font", Font.BOLD, 18));
+
+        gamePanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                challengeText.setText(game.getNextQuestion());
+            }
+        });
 
         //Add names button
         JButton addNamesButton = new JButton("Add names");

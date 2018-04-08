@@ -3,6 +3,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Class used to run the game
@@ -19,12 +20,11 @@ public class Fracture {
             FileInputStream fis = new FileInputStream("Challenges.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(fis));
 
-            String line = null;
-
+            String line;
             while ((line = br.readLine()) != null) {
                 allChallenges.add(new Challenge(line));
             }
-
+            currentChallenges = allChallenges;
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -34,5 +34,11 @@ public class Fracture {
         players.clear();
         players = newPlayers;
         System.out.println(players);
+    }
+
+    public String getNextQuestion() {
+        Random rand = new Random();
+        Challenge randomChallenge = currentChallenges.get(rand.nextInt(currentChallenges.size()));
+        return randomChallenge.getChallenge();
     }
 }
