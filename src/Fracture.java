@@ -12,6 +12,7 @@ public class Fracture {
 
     private ArrayList<String> players = new ArrayList<>();
     private ArrayList<Challenge> allChallenges, currentChallenges;
+    private ArrayList<Virus> activeViruses = new ArrayList<>();
 
     public Fracture() {
         allChallenges = new ArrayList<>();
@@ -21,7 +22,14 @@ public class Fracture {
 
             String line;
             while ((line = br.readLine()) != null) {
-                allChallenges.add(new Challenge(line));
+                if (line.contains("!VIRUS!")) {
+                    line = line.replaceAll("!VIRUS!", "");
+                    String endText = br.readLine();
+
+                    allChallenges.add(new Virus(line, endText));
+                } else {
+                    allChallenges.add(new Challenge(line));
+                }
             }
             currentChallenges = new ArrayList<>(allChallenges);
         } catch (IOException e) {
@@ -38,6 +46,12 @@ public class Fracture {
     public String getNextChallenge() {
         //Check there are questions, if not reset
         if (currentChallenges.isEmpty()) {
+
+            if (!activeViruses.isEmpty()) {
+                Virus v = activeViruses.get(0);
+                activeViruses.remove(v);
+                return v.getEndText();
+            }
             currentChallenges = new ArrayList<>(allChallenges);
             return "All challenges completed, resetting";
         }
@@ -46,8 +60,25 @@ public class Fracture {
             return "Not enough players, please make sure there are at least 3 players ";
         }
 
+        for (Virus v: activeViruses) {
+            if (v.getTurnsLeft() == 0) {
+                String virusFinishedText = v.getEndText();
+                activeViruses.remove(v);
+                return virusFinishedText;
+            }
+            v.incrementTurn();
+        }
+
         Random rand = new Random();
         Challenge randomChallenge = currentChallenges.get(rand.nextInt(currentChallenges.size()));
+        //System.out.println("Challenge pulled" + randomChallenge);
+
+        if (randomChallenge instanceof Virus) {
+            //System.out.println("Found a virus");
+            Virus randomVirus = (Virus) randomChallenge;
+            randomVirus.resetTurns();
+            activeViruses.add(randomVirus);
+        }
 
         String challengeText = randomChallenge.getChallenge();
 
@@ -60,6 +91,8 @@ public class Fracture {
 
         //Remove this challenge
         currentChallenges.remove(randomChallenge);
+        //System.out.println(currentChallenges.toString());
+
         return challengeText;
     }
 }
