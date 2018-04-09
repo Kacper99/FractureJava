@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 /**
  * Window for the game and shows the UI
@@ -11,8 +12,12 @@ public class FFrame extends JFrame {
     Fracture game;
     PlayersFrame pf;
 
-    public FFrame(String title) {
-        super(title);
+    public static void main(String[] args) {
+        new FFrame();
+    }
+
+    public FFrame() {
+        super("Fracture Drinking Game");
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800,400);
@@ -20,7 +25,11 @@ public class FFrame extends JFrame {
         Container c = this.getContentPane();
         c.setLayout(new BorderLayout());
 
-        game = new Fracture();
+        try {
+            game = new Fracture();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
         pf = new PlayersFrame(game);
 
         //Game scene
