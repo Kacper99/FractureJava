@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -46,6 +48,13 @@ public class FFrame extends JFrame {
             }
         });
 
+        gamePanel.addKeyListener(new KeyAdapter() { //TODO: Fix the key listener
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if  (e.getKeyChar() == 'n')
+                    challengeText.setText("<html>" + game.getNextChallenge() + "</html>");
+            }
+        });
         //Add names button
         JButton addNamesButton = new JButton("Add names");
         addNamesButton.addActionListener(e -> {
