@@ -20,7 +20,7 @@ public class PlayersFrame extends JFrame{
         c.add(new JLabel("Enter the player names"), BorderLayout.NORTH);
 
         //Player name area
-        JPanel namesBoxGUI = new JPanel(new GridLayout(8,1)); //TODO: CHANGE THIS
+        JPanel namesBoxGUI = new JPanel(new GridLayout(8,1));
         nameBoxes = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             NameInputBox nameInput = new NameInputBox(i + 1);

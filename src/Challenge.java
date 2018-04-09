@@ -2,8 +2,6 @@ public class Challenge {
 
     protected String challenge;
 
-    public Challenge() {}
-
     public Challenge(String challenge) {
         this.challenge = challenge;
     }

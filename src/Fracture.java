@@ -14,27 +14,23 @@ public class Fracture {
     private ArrayList<Challenge> allChallenges, currentChallenges;
     private ArrayList<Virus> activeViruses = new ArrayList<>();
 
-    public Fracture() {
+    public Fracture() throws IOException {
         allChallenges = new ArrayList<>();
-        try {
-            FileInputStream fis = new FileInputStream("Challenges.txt");
-            BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+        FileInputStream fis = new FileInputStream("Challenges.txt");
+        BufferedReader br = new BufferedReader(new InputStreamReader(fis));
 
-            String line;
-            while ((line = br.readLine()) != null) {
-                if (line.contains("!VIRUS!")) {
-                    line = line.replaceAll("!VIRUS!", "");
-                    String endText = br.readLine();
+        String line;
+        while ((line = br.readLine()) != null) {
+            if (line.contains("!VIRUS!")) {
+                line = line.replaceAll("!VIRUS!", "");
+                String endText = br.readLine();
 
-                    allChallenges.add(new Virus(line, endText));
-                } else {
-                    allChallenges.add(new Challenge(line));
-                }
+                allChallenges.add(new Virus(line, endText));
+            } else {
+                allChallenges.add(new Challenge(line));
             }
-            currentChallenges = new ArrayList<>(allChallenges);
-        } catch (IOException e) {
-            System.out.println(e);
         }
+        currentChallenges = new ArrayList<>(allChallenges);
     }
 
     public void updatePlayers(ArrayList<String> newPlayers) {
