@@ -21,7 +21,12 @@ public class Fracture {
 
             String line;
             while ((line = br.readLine()) != null) {
-                allChallenges.add(new Challenge(line));
+                if (line.contains("!VIRUS!")) {
+                    line = line.replaceAll("!VIRUS", "");
+                    allChallenges.add(new Virus(line));
+                } else {
+                    allChallenges.add(new Challenge(line));
+                }
             }
             currentChallenges = new ArrayList<>(allChallenges);
         } catch (IOException e) {
