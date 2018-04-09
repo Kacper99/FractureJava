@@ -2,16 +2,31 @@ import java.util.Random;
 
 public class Virus extends Challenge {
 
-    private int inEffectFor;
+    private int turnsLeft;
+    private String endText;
 
-    public Virus(String challenge) {
+    public Virus(String challenge, String endText) {
         super(challenge);
 
-        Random rand = new Random();
-        inEffectFor = rand.nextInt(11) + 4;
+        this.endText = endText;
+
+        resetTurns();
     }
 
-    public int getInEffectFor() {
-        return inEffectFor;
+    public int getTurnsLeft() {
+        return turnsLeft;
+    }
+
+    public void incrementTurn() {
+        turnsLeft--;
+    }
+
+    public String getEndText() {
+        return endText;
+    }
+
+    public void resetTurns() {
+        Random rand = new Random();
+        turnsLeft = rand.nextInt(11) + 4;
     }
 }

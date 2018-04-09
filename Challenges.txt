@@ -18,4 +18,8 @@ Last person to have checked their phone drinks 2 times
 !NAME! if you had to sleep with one person in the room, who would it be. Otherwise drink 5 times
 !NAME! drink 2 times out of !NAME!'s glass
 !NAME! and !NAME! - Rock, Paper, Scissors. The loser drinks 3 times
-!NAME! drink as many sips as glasses you've pored
+!NAME! drink as many sips as glasses you've poured
+!VIRUS!Shhh you're in a library, everyone has to whisper until told otherwise. Anyone who fails drinks 3 times
+You can stop whispering now
+!VIRUS!!NAME! has to copy all of us !NAME!'s moves, if he forgets take a drink
+You can now stop copying every move
