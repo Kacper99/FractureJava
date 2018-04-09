@@ -12,7 +12,7 @@ public class Fracture {
 
     private ArrayList<String> players = new ArrayList<>();
     private ArrayList<Challenge> allChallenges, currentChallenges;
-    public ArrayList<Virus> activeViruses = new ArrayList<>();
+    private ArrayList<Virus> activeViruses = new ArrayList<>();
 
     public Fracture() {
         allChallenges = new ArrayList<>();
