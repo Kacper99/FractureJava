@@ -10,7 +10,6 @@ import java.util.Random;
  */
 public class Fracture {
 
-    private int numQuestions;
     private ArrayList<String> players = new ArrayList<>();
     private ArrayList<Challenge> allChallenges, currentChallenges;
 

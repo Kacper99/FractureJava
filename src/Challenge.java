@@ -18,12 +18,4 @@ public class Challenge {
     public String getChallenge() {
         return challenge;
     }
-
-    public String getFollowup() {
-        return followup;
-    }
-
-    public boolean hasFollowup() {
-        return isFollowup;
-    }
 }
