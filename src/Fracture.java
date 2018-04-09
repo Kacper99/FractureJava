@@ -14,6 +14,10 @@ public class Fracture {
     private ArrayList<Challenge> allChallenges, currentChallenges;
     private ArrayList<Virus> activeViruses = new ArrayList<>();
 
+    /**
+     * Initialises the game by loading the questions from a text file
+     * @throws IOException IOException
+     */
     public Fracture() throws IOException {
         allChallenges = new ArrayList<>();
         FileInputStream fis = new FileInputStream("Challenges.txt");
@@ -33,12 +37,20 @@ public class Fracture {
         currentChallenges = new ArrayList<>(allChallenges);
     }
 
+    /**
+     * Update the players in the game
+     * @param newPlayers The new list of players in the game
+     */
     public void updatePlayers(ArrayList<String> newPlayers) {
         players.clear();
         players = newPlayers;
         System.out.println(players);
     }
 
+    /**
+     * Gets the next challenge from the challenges which haven't been done yet
+     * @return A random challenge
+     */
     public String getNextChallenge() {
         //Check there are questions, if not reset
         if (currentChallenges.isEmpty()) {
@@ -85,10 +97,7 @@ public class Fracture {
             challengeText = challengeText.replaceFirst("!NAME!", randomName);
         }
 
-        //Remove this challenge
-        currentChallenges.remove(randomChallenge);
-        //System.out.println(currentChallenges.toString());
-
+        currentChallenges.remove(randomChallenge); //Remove the challenge
         return challengeText;
     }
 }

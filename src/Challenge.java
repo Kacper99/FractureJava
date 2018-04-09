@@ -1,3 +1,6 @@
+/**
+ * Stores a challenge
+ */
 public class Challenge {
 
     protected String challenge;
