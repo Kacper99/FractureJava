@@ -54,6 +54,6 @@ public class Virus extends Challenge {
      */
     public void resetTurns() {
         Random rand = new Random();
-        turnsLeft = rand.nextInt(11) + 4;
+        turnsLeft = rand.nextInt(26) + 4;
     }
 }

@@ -16,7 +16,7 @@ public class NameInputBox extends JPanel{
 
     /**
      * Will check if an actual name has been added or if it's just the default text/something blank
-     * @return THe text within the JtextBox
+     * @return THe text within the JTextBox
      */
     public String getText() {
         return (nameField.getText().equals("Enter name") || nameField.getText().equals("")) ? null : nameField.getText();
