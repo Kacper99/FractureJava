@@ -4,6 +4,7 @@ public class Virus extends Challenge {
 
     private int turnsLeft;
     private String endText;
+    private String[] randomAccents = new String[]{"Chinese", "Polish", "German"};
 
     public Virus(String challenge, String endText) {
         super(challenge);
@@ -23,6 +24,15 @@ public class Virus extends Challenge {
 
     public String getEndText() {
         return endText;
+    }
+
+    public String getChallenge() {
+        if (challenge.contains("!RANDOMACCENT!")) {
+            Random rand = new Random();
+            String randomAccent = randomAccents[rand.nextInt(randomAccents.length)];
+            challenge = challenge.replaceAll("!RANDOMACCENT!", randomAccent);
+        }
+        return challenge;
     }
 
     public void resetTurns() {
