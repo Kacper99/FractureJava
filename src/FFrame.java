@@ -1,3 +1,5 @@
+import javafx.scene.input.KeyCode;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -39,7 +41,7 @@ public class FFrame extends JFrame {
         gamePanel.setBackground(Color.ORANGE);
 
         JLabel challengeText = new JLabel("Challenge");
-        challengeText.setFont(new Font("font", Font.BOLD, 18));
+        challengeText.setFont(new Font("font", Font.BOLD, 30));
 
         gamePanel.addMouseListener(new MouseAdapter() {
             @Override
@@ -53,6 +55,7 @@ public class FFrame extends JFrame {
             public void keyPressed(KeyEvent e) {
                 if  (e.getKeyChar() == 'n')
                     challengeText.setText("<html>" + game.getNextChallenge() + "</html>");
+
             }
         });
         //Add names button
